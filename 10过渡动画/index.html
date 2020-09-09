@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="./css/animate.min.css">
+		<style>
+			.box{
+				height: 200px;
+				width: 200px;
+				margin: 0 auto;
+				background-color: #00B7FF;
+			}
+			.active {
+				opacity: 0;
+			}
+			
+			.slide-enter-active,.slide-leave-active {
+				transition: all 2s;
+			}
+			.slide-enter,.slide-leave-to {
+				transform: translateX(500px);
+				opacity: 0;
+			}
+		</style>
+		</head>
+		<body>
+			<div id='app'>
+				<transition name="slide" enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
+					<!-- <div class="box" v-if="isShow"></div> -->
+					<div class="box" :class="{active: isShow}"></div>
+				</transition>
+				<button type="button" @click="toggleEvent">切换按钮</button>
+			</div>
+			<script>
+				let app = new Vue({
+					el: '#app',
+					data: {
+						isShow: false
+					},
+					methods: {
+						toggleEvent: function(){
+							this.isShow=!this.isShow;
+						}
+					}
+				})
+			</script>
+		</body>
+	</html>
+	

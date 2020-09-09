@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{msg}}
+			<div>{{reversemsg}}</div>
+		</div>
+		
+		<script type="text/javascript">
+			let app=new	Vue({
+				el: "#app",
+				data: {
+					msg: "Hello Vue"
+				},
+				computed: {
+					reversemsg: {
+						get: function(){
+							return this.msg.split("").reverse().join("");
+						},
+						set: function(value){
+							console.log(value);
+							this.msg=value.split("").reverse().join("");
+						}
+					}
+					
+				},
+				watch: {
+					msg: function(val){
+						console.log("监听事件-------msg");
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

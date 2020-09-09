@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h3>{{firstname+lastname}}</h3>
+			<h3>{{fullname}}</h3>
+			<!-- 单词逆序 -->
+			<h3>{{word.split("").reverse().join("")}}</h3>
+			<h3>{{reverseWord}}</h3>
+			<!-- 过滤年龄为偶数的学生 -->
+			<ul>
+				<li v-for="item,key in oddStudents">索引值：{{key}}------学生姓名：{{item.student}}-----{{item.age}}</li>
+			</ul>
+		</div>
+		<script>
+			let app=new Vue({
+				el: "#app",
+				data: {
+					firstname: "张",
+					lastname: "三",
+					word: "music",
+					students:[
+						{
+							student: "小明",
+							age: "16"
+						},
+						{
+							student: "小黑",
+							age: "10"
+						},
+						{
+							student: "小红",
+							age: "13"
+						},
+						{
+							student: "小栏",
+							age: "14"
+						}
+					]
+				},
+				computed:{
+					fullname: function(){
+						return this.firstname+this.lastname;
+					},
+					reverseWord:function(){
+						return this.word.split("").reverse().join("");
+					},
+					oddStudents: function(){
+						return this.students.filter((item,i)=>{
+							return item.age%2==0;
+						});
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

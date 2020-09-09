@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h3>明星列表</h3>
+			<ul>
+				<li v-for="item,key in stars">{{key}}{{item}}</li>
+			</ul>
+			<h3>学生列表</h3>
+			<ul>
+				<li v-for="item,key in students">{{key}}----姓名：{{item.student}}-----年龄：{{item.age}}</li>
+			</ul>
+			<h3>单个学生列表</h3>
+			<ul>
+				<li v-for="item,key in students[0]">{{key}}-----{{item}}</li>
+			</ul>
+			<h3>条件渲染+循环列表（筛序年龄为偶数的显示），不管v-if写在v-for的前或者后，执行顺序都是先循环再判断</h3>
+			<ul>
+				<!-- key可以避免相同页面复用 -->
+				<!-- :key中“:”表示的是item是一个变量，如果item只是一个字符串的时候，可以不加“:” -->
+				<li v-for="item,key in students" v-if="item.age%2==0" :key="item">
+					<h5>{{item.student}}</h5>
+					<p>索引值：{{key}}----年龄：{{item.age}}</p>
+				</li>
+			</ul>
+			
+		</div>
+		<script>
+			let app=new Vue({
+				el: "#app",
+				data: {
+					stars:["蔡徐坤","黄晓明","苏有朋","赵薇"],
+					students:[
+						{
+							student: "小明",
+							age: "16"
+						},
+						{
+							student: "小黑",
+							age: "10"
+						},
+						{
+							student: "小红",
+							age: "13"
+						},
+						{
+							student: "小栏",
+							age: "14"
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

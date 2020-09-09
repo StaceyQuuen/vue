@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.page {
+				width: 200px;
+				height: 200px;
+				background-color: skyblue;
+				display: none;
+			}
+			.active {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 【1】放具体对象为true/fale -->
+			<div class="page" :class="{active:isShow}"></div>
+			<br>
+			<!-- 【2】直接放对象名称 -->
+			<div class="page" :class="styObj"></div>
+			<br>
+			<!-- 【3】放类名字符串数组 -->
+			<div class="page" :class="arr"></div>
+			<br>
+			<!-- 【4】放字符串 -->
+			<div class="page" :class="str"></div>
+			<br>
+			<!-- 【5】数组和对象混合使用 -->
+			<div class="page" :class="arrObj"></div>
+			<br>
+		</div>
+		<script>
+			let app = new Vue ({
+				el: "#app",
+				data: {
+					isShow: true,
+					styObj: {
+						active: true,
+						wq: true
+					},
+					arr: ["active","arr"],
+					str: "active str",
+					arrObj: ["active",{arrObj: true}]
+				}
+			})
+		</script>
+	</body>
+</html>

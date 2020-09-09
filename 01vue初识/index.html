@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- id="app"用于表示在这里使用vue框架爱 -->
+		<div id="app">
+			{{title}}
+		</div>
+		<script>
+			console.log(Vue);
+			var app = new Vue({
+				el:"#app",
+				data:{
+					title:"Hello Vue!"
+				}
+			})
+		</script>
+	</body>
+</html>

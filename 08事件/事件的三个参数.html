@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<!-- <li v-for="item,index in arr" :data-id="index">{{item}}</li> -->
+				<li v-for="item,index in arr" v-on:click="clickEvent(index,item,$event)">{{item}}</li>
+			</ul>
+		</div>
+		<script>
+			let app = new Vue({
+				el: "#app",
+				data: {
+					arr: ["蔡徐坤","胡歌","刘诗诗"]
+				},
+				methods: {
+					clickEvent: function(index,item,$event){
+						console.log(index);
+						console.log(item);
+						console.log($event);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

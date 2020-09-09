@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id='app'>
+			<h3>输入框</h3>
+			<input type="text" v-model.lazy="username" value="username">
+			{{username}}
+			
+			<h3>文本域</h3>
+			<textarea rows="10" cols="10" v-model="username" value="username">
+				{{username}}	
+			</textarea>
+			
+			<h3>单选</h3>
+			<span v-for="item in fruits">
+				<!-- <input type="radio"> -->
+				<input  type="radio" name="zfruits" v-model='radio' :value="item">
+				{{item}}
+			</span>	
+			{{radio}}
+			
+			<h3>多选</h3>
+			<span v-for="item in fruits">
+				<input type="checkbox" v-model="checkfruits" :value="item">
+				{{item}}
+			</span>
+			{{checkfruits}}
+			
+			<h3>下拉框</h3>
+			<select name="" id="" v-model='place' multiple="true">
+				<option v-for="item in places" :value="item">{{item}}</option>
+			</select>
+			{{place}}
+		</div>
+		<script>
+			var app = new Vue({  
+				el: '#app',
+				data: {
+					username: '小明',
+					fruits: ['apple','banana','orange','pear'],
+					radio: [],
+					checkfruits: [],
+					places: ['上海','重庆','西安','天津','桂林'],
+					place: []
+				}
+				
+			})
+		</script>
+	</body>
+</html>

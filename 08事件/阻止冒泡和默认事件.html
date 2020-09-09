@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 阻止冒泡事件向上传递 -->
+			<div @click="clickParent">
+				<button @click.stop="clickChild">按钮</button>
+			</div>
+			<!-- 阻止默认事件 -->
+			<form action="" method="post">
+				<input type="text" v-model="city" name="username">
+				<input type="submit" @click.prevent="searchWeather">
+			</form>
+			{{tmp}}{{wind_dir}}
+		</div>
+		<script>
+			let app=new Vue({
+				el: "#app",
+				data: {
+					city: "广州",
+					tmp: '',
+					wind_dir: ''
+				},
+				methods: {
+					clickParent: function(){
+						console.log("clickParent");
+					},
+					clickChild: function(){
+						console.log("clickChild");
+					},
+					searchWeather: async function(){
+						console.log("查询天气");
+						console.log(this.city);
+						let httpUrl = `https://free-api.heweather.net/s6/weather/now?location=${this.city}&key=3c497450d8e44c5280421ceaba1db581`
+						let res = await fetch(httpUrl);
+						let result = await res.json();
+						console.log(result);
+						let now = result.HeWeather6[0].now;
+						console.log(now);
+						this.tmp = now.tmp;
+						console.log(tmp);
+						this.wind_dir = now.wind_dir;
+						console.log(now.wind_dir);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
